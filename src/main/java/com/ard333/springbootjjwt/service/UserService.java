@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,13 +24,14 @@ public class UserService {
 	
 	@PostConstruct
 	public void init(){
+
 		data = new HashMap<>();
 		
 		//username:passwowrd -> user:user
-		data.put("user", new User("user", "cBrlgyL2GI2GINuLUUwgojITuIufFycpLG4490dhGtY=", true, Arrays.asList(Role.ROLE_USER)));
+		data.put("user", new User(null,"user", "cBrlgyL2GI2GINuLUUwgojITuIufFycpLG4490dhGtY=",  Arrays.asList(Role.ROLE_USER)));
 
 		//username:passwowrd -> admin:admin
-		data.put("admin", new User("admin", "dQNjUIMorJb8Ubj2+wVGYp6eAeYkdekqAcnYp+aRq5w=", true, Arrays.asList(Role.ROLE_ADMIN)));
+		data.put("admin", new User(null,"admin", "dQNjUIMorJb8Ubj2+wVGYp6eAeYkdekqAcnYp+aRq5w=", Arrays.asList(Role.ROLE_ADMIN)));
 	}
 	
 	public User findByUsername(String username) {
